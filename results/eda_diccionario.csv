@@ -1,0 +1,11 @@
+variable,tipo,nulos_pct,unicos,mediana,minimo,maximo
+price,numerica,7.121970893691393,11775,106393.0,246.59,160563760.0
+neighbourhood_cleansed,categorica/texto,0.0,47,,,
+room_type,categorica/texto,0.0,4,,,
+accommodates,numerica,0.0,16,2.0,1.0,16.0
+bedrooms,numerica,0.043693072967431856,20,1.0,0.0,31.0
+bathrooms_text,categorica/texto,0.07394212348334621,48,,,
+amenities,categorica/texto,0.0,27794,,,
+minimum_nights,numerica,0.003361005612879374,72,2.0,1.0,730.0
+calculated_host_listings_count,numerica,0.0,68,3.0,1.0,201.0
+number_of_reviews_ltm,numerica,0.0,164,6.0,0.0,567.0

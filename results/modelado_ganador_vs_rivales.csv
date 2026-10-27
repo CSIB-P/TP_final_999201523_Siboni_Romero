@@ -1,0 +1,3 @@
+comparacion,diferencia_MdAPE_pp,p_corregido,p_sin_corregir,veredicto
+XGBoost vs Gradient Boosting,0.12112460700996834,0.5621030479868145,0.1646533047368833,empate estadistico
+XGBoost vs Random Forest,0.13895863303880668,0.4922373125697062,0.10254692262897566,empate estadistico

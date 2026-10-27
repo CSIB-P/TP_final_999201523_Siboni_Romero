@@ -1,0 +1,10 @@
+__pycache__/
+.ipynb_checkpoints/
+.venv/
+venv/
+*.pyc
+# Los datos de Inside Airbnb no se versionan: ver data/README.md
+data/*.csv
+data/*.csv.gz
+data/*.geojson
+data/*.zip
