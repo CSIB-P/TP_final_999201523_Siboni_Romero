@@ -16,7 +16,7 @@ Umbral de desvio fijado ex ante: 0.4253 en escala logaritmica (+53.0% / -34.6%).
 ==============================================================================
 2. Comprension de los datos
 ==============================================================================
-archivo: data/listings.csv | filas: 29,753 | columnas: 90
+archivo: data\listings.csv | filas: 29,753 | columnas: 90
 anfitriones unicos: 14,623
 snapshot (last_scraped maximo): 2026-09-27
 
@@ -106,7 +106,7 @@ publicaciones de desarrollo con al menos una gemela del mismo anfitrion: 31.3% |
   KNN: mejor {'n_neighbors': 20, 'weights': 'uniform'} -> MdAPE 22.36  (margen con el segundo: 0.006 p.p.)
   Random Forest: mejor {'max_features': 0.3, 'min_samples_leaf': 5} -> MdAPE 21.20  (margen con el segundo: 0.214 p.p.)
   Gradient Boosting: mejor {'learning_rate': 0.05, 'max_leaf_nodes': 31} -> MdAPE 21.05  (margen con el segundo: 0.008 p.p.)
-  XGBoost: mejor {'max_depth': 6, 'learning_rate': 0.05, 'n_estimators': 400} -> MdAPE 20.90  (margen con el segundo: 0.352 p.p.)
+  XGBoost: mejor {'max_depth': 6, 'learning_rate': 0.05, 'n_estimators': 400} -> MdAPE 20.99  (margen con el segundo: 0.154 p.p.)
 
 4.1 Busqueda de hiperparametros (GroupKFold de 3 folds sobre desarrollo)
                modelo  n_neighbors   weights  MdAPE max_features  min_samples_leaf  learning_rate  max_leaf_nodes  max_depth  n_estimators
@@ -124,34 +124,34 @@ publicaciones de desarrollo con al menos una gemela del mismo anfitrion: 31.3% |
 11  Gradient Boosting          NaN       NaN 21.058          NaN               NaN          0.100          31.000        NaN           NaN
 12  Gradient Boosting          NaN       NaN 21.197          NaN               NaN          0.050          63.000        NaN           NaN
 13  Gradient Boosting          NaN       NaN 21.228          NaN               NaN          0.100          63.000        NaN           NaN
-14            XGBoost          NaN       NaN 20.904          NaN               NaN          0.050             NaN      6.000       400.000
-15            XGBoost          NaN       NaN 21.256          NaN               NaN          0.100             NaN      6.000       400.000
-16            XGBoost          NaN       NaN 21.504          NaN               NaN          0.050             NaN      8.000       400.000
-17            XGBoost          NaN       NaN 21.778          NaN               NaN          0.100             NaN      8.000       400.000
+14            XGBoost          NaN       NaN 20.990          NaN               NaN          0.050             NaN      6.000       400.000
+15            XGBoost          NaN       NaN 21.144          NaN               NaN          0.100             NaN      6.000       400.000
+16            XGBoost          NaN       NaN 21.439          NaN               NaN          0.050             NaN      8.000       400.000
+17            XGBoost          NaN       NaN 21.898          NaN               NaN          0.100             NaN      8.000       400.000
   Benchmark mediana       0.3 s
   Benchmark promedio      0.3 s
-  Regresion lineal        1.1 s
-  KNN                     5.9 s
-  Random Forest          71.7 s
-  Gradient Boosting      14.1 s
-  XGBoost                13.5 s
+  Regresion lineal        2.9 s
+  KNN                     2.6 s
+  Random Forest          24.3 s
+  Gradient Boosting      15.0 s
+  XGBoost                 6.4 s
 
 4.2 Validacion cruzada agrupada por anfitrion (5 folds x 4 repeticiones)
                     MdAPE_agrupado  desvio  MAPE_agrupado  R2log_agrupado  MdAPE_aleatorio  brecha_pp  segundos  reduccion_vs_benchmark_pct
 modelo                                                                                                                                     
-Benchmark mediana            28.17    0.68          35.74            0.14            27.68       0.49      0.31                        0.00
-Benchmark promedio           39.14    1.13          51.60            0.04            38.74       0.39      0.27                      -38.90
-Regresion lineal             23.44    0.87          32.34            0.42            23.13       0.30      1.14                       16.82
-KNN                          22.12    0.56          30.24            0.46            21.15       0.98      5.91                       21.48
-Random Forest                21.08    0.68          27.93            0.52            19.28       1.80     71.65                       25.19
-Gradient Boosting            21.06    0.71          28.12            0.52            19.95       1.11     14.10                       25.26
-XGBoost                      20.94    0.62          28.87            0.51            19.27       1.67     13.48                       25.69
+Benchmark mediana            28.17    0.68          35.74            0.14            27.68       0.49      0.35                        0.00
+Benchmark promedio           39.14    1.13          51.60            0.04            38.74       0.39      0.30                      -38.90
+Regresion lineal             23.44    0.87          32.34            0.42            23.13       0.30      2.86                       16.82
+KNN                          22.12    0.56          30.24            0.46            21.15       0.98      2.61                       21.48
+Random Forest                21.08    0.68          27.93            0.52            19.28       1.80     24.28                       25.19
+Gradient Boosting            21.06    0.71          28.12            0.52            19.95       1.11     14.97                       25.26
+XGBoost                      20.98    0.69          28.85            0.51            19.19       1.79      6.38                       25.54
 
 4.3 Criterio de exito: superar al benchmark y a la regresion lineal
                                      mejora_MdAPE_pp  p_corregido  p_sin_corregir  supera
 candidato         referencia                                                             
-XGBoost           Benchmark mediana           7.2373       0.0000          0.0000      si
-                  Regresion lineal            2.4979       0.0000          0.0000      si
+XGBoost           Benchmark mediana           7.1959       0.0000          0.0000      si
+                  Regresion lineal            2.4565       0.0000          0.0000      si
                   CRITERIO DE EXITO              NaN          NaN             NaN  CUMPLE
 Gradient Boosting Benchmark mediana           7.1162       0.0000          0.0000      si
                   Regresion lineal            2.3768       0.0000          0.0000      si
@@ -163,13 +163,13 @@ KNN               Benchmark mediana           6.0523       0.0000          0.000
                   Regresion lineal            1.3128       0.0042          0.0000      si
                   CRITERIO DE EXITO              NaN          NaN             NaN  CUMPLE
 
-Modelo con menor MdAPE agrupado: XGBoost (20.94%)
+Modelo con menor MdAPE agrupado: XGBoost (20.98%)
 
 4.4 El ganador frente a los demas modelos de arboles (bilateral)
                               diferencia_MdAPE_pp  p_corregido  p_sin_corregir           veredicto
 comparacion                                                                                       
-XGBoost vs Gradient Boosting               0.1211       0.5621          0.1647  empate estadistico
-XGBoost vs Random Forest                   0.1390       0.4922          0.1025  empate estadistico
+XGBoost vs Gradient Boosting               0.0797       0.6340          0.2505  empate estadistico
+XGBoost vs Random Forest                   0.0975       0.6805          0.3186  empate estadistico
 
 ==============================================================================
 5. Evaluacion sobre el holdout (una sola vez)
@@ -182,9 +182,9 @@ ni del umbral de desvio. Se evalua aqui por unica vez.
 modelo                                                                      
 Benchmark mediana  28.34 36.31 55,000.73    0.20                        0.00
 Regresion lineal   24.45 34.51 46,104.10    0.43                       13.72
-XGBoost            21.81 30.47 42,165.00    0.50                       23.03
+XGBoost            21.51 30.41 42,123.42    0.51                       24.12
 
-Desarrollo vs holdout para XGBoost: MdAPE 20.94% en validacion cruzada agrupada contra 21.81% en el holdout.
+Desarrollo vs holdout para XGBoost: MdAPE 20.98% en validacion cruzada agrupada contra 21.51% en el holdout.
 
 ==============================================================================
 6. Robustez
@@ -201,8 +201,8 @@ sin recorte mediana    28.38  36.43
 6.2 Sensibilidad de la imputacion de bedrooms (XGBoost, CV agrupada de 5 folds)
                                             MdAPE  MAPE  R2log
 imputacion_bedrooms                                           
-mediana + indicador (decision tomada)       21.00 28.92   0.51
-0 en unidades completas, 1 en habitaciones  21.04 28.80   0.51
+mediana + indicador (decision tomada)       21.03 28.87   0.51
+0 en unidades completas, 1 en habitaciones  21.14 28.79   0.51
 
 ==============================================================================
 7. Interpretabilidad: que explica el precio esperado
@@ -210,121 +210,121 @@ mediana + indicador (decision tomada)       21.00 28.92   0.51
 
 7.1 Importancia global agrupada (SHAP sobre el holdout)
                                 shap_medio_abs     pct
-accommodates                            0.1012 14.2825
-calculated_host_listings_count          0.0960 13.5484
-bedrooms                                0.0902 12.7321
-latitude                                0.0827 11.6644
-banos                                   0.0719 10.1501
-room_type                               0.0650  9.1702
-minimum_nights                          0.0582  8.2158
-n_amenities                             0.0550  7.7638
-longitude                               0.0334  4.7125
-neighbourhood_cleansed                  0.0302  4.2673
-bano_compartido                         0.0179  2.5328
-beds                                    0.0062  0.8790
+accommodates                            0.1008 14.0802
+calculated_host_listings_count          0.0966 13.4902
+bedrooms                                0.0908 12.6756
+latitude                                0.0862 12.0413
+banos                                   0.0708  9.8925
+room_type                               0.0649  9.0643
+minimum_nights                          0.0591  8.2528
+n_amenities                             0.0548  7.6530
+longitude                               0.0372  5.1918
+neighbourhood_cleansed                  0.0290  4.0527
+bano_compartido                         0.0186  2.6012
+beds                                    0.0067  0.9387
 
 ==============================================================================
 8. Profundizacion: brecha, demanda y etica
 ==============================================================================
-error mediano del modelo en el holdout: 0.2140 en log (+23.9% / -19.3%)
+error mediano del modelo en el holdout: 0.2123 en log (+23.6% / -19.1%)
 umbral fijado ex ante: 0.4253 en log (+53.0% / -34.6%)
 
 8.1 KPI de desvio sobre el holdout
          publicaciones  pct_con_desvio  pct_subvaluadas  pct_sobrevaluadas
-holdout           5721            20.1             10.8                9.3
+holdout           5721            20.5             11.3                9.2
 
 8.2 KPI por barrio (diez barrios con mas publicaciones en el holdout)
               publicaciones  pct_subvaluadas  pct_sobrevaluadas  pct_con_desvio
 barrio                                                                         
-Palermo                2018             12.4                9.0            21.5
-Recoleta                793              9.6               11.1            20.7
-San Nicolas             477              4.2               11.5            15.7
-Retiro                  282             11.3                6.7            18.1
-Monserrat               242              5.8                5.0            10.7
-Belgrano                218             11.5                8.7            20.2
-Villa Crespo            206             22.3                9.2            31.6
-Balvanera               203              9.9               11.3            21.2
-Almagro                 191              4.2                6.3            10.5
-San Telmo               163             11.0                5.5            16.6
+Palermo                2018             12.5                9.1            21.6
+Recoleta                793             10.8               11.0            21.8
+San Nicolas             477              4.6               10.7            15.3
+Retiro                  282             11.7                6.4            18.1
+Monserrat               242              7.0                5.0            12.0
+Belgrano                218             13.3               10.1            23.4
+Villa Crespo            206             20.9                8.3            29.1
+Balvanera               203             10.8               10.3            21.2
+Almagro                 191              6.3                6.8            13.1
+San Telmo               163              9.8                5.5            15.3
 
 8.3 Ejemplos tipicos: 'esta publicacion esta X% por encima o por debajo del precio esperado'
 (los cuatro mas representativos de cada grupo senalado)
                     neighbourhood_cleansed        room_type  accommodates  bedrooms  banos     price  precio_esperado  brecha_pct
 id                                                                                                                               
-39174661                         Chacarita  Entire home/apt             3       1.0    1.0  84,085.0        149,501.0       -43.8
-23502508                      Constitucion     Private room             1       1.0    2.0  28,565.0         50,787.5       -43.8
-676042887894761082                Recoleta  Entire home/apt             2       0.0    1.0  56,871.9        101,253.8       -43.8
-1584336408447631485             Colegiales  Entire home/apt             2       1.0    1.0  61,153.0        109,020.4       -43.9
-1708107151181078864               Recoleta  Entire home/apt             2       0.0    1.0 182,500.0         98,259.5        85.7
-954175036761739118                 Almagro  Entire home/apt            10       5.0    2.0 474,697.0        255,465.3        85.8
-46022324                           Palermo  Entire home/apt             4       1.0    1.0 288,946.0        155,895.1        85.3
-1602422335887197514                Palermo     Private room             2       1.0    6.0  83,779.0         44,962.5        86.3
+5030281                            Palermo  Entire home/apt             2       0.0    1.0  50,451.0         89,143.9       -43.4
+1728446165591555726          Puerto Madero  Entire home/apt             2       1.0    1.5 128,994.0        228,378.9       -43.5
+1471955184192931499           Constitucion  Entire home/apt             2       1.0    1.0  45,864.5         81,008.6       -43.4
+676042887894761082                Recoleta  Entire home/apt             2       0.0    1.0  56,871.9        100,748.9       -43.6
+1715308103221383765               Recoleta  Entire home/apt             3       1.0    1.0 229,322.2        123,763.8        85.3
+1751569793983257536               Recoleta  Entire home/apt             3       1.0    1.0 229,322.2        123,763.8        85.3
+10995040                           Palermo  Entire home/apt             2       1.0    1.0 161,617.6         87,211.6        85.3
+1274763024519325884                Palermo  Entire home/apt             6       3.0    3.5 830,999.0        448,718.3        85.2
 
-Publicaciones senaladas con brecha mayor a +500%: 35 (0.61% del holdout). Precio mediano publicado: 917,289 ARS contra 105,488 del holdout.
+Publicaciones senaladas con brecha mayor a +500%: 34 (0.59% del holdout). Precio mediano publicado: 985,321 ARS contra 105,488 del holdout.
 Son candidatas a error de carga (por ejemplo, precio mensual cargado como precio por
 noche) mas que a decisiones de precio, y se reportan como hallazgo de calidad de datos.
 
 Cinco publicaciones con la brecha mas extrema (sospechosas de error de carga)
                     neighbourhood_cleansed        room_type  accommodates  bedrooms  banos       price  precio_esperado  brecha_pct
 id                                                                                                                                 
-1457630902555107353              Caballito     Private room             1       1.0    1.0   917,289.0         40,905.1     2,142.5
-41821756                           Palermo  Entire home/apt             2       0.0    1.0 1,226,327.8         65,590.9     1,769.7
-35184890                         Balvanera  Entire home/apt             2       0.0    1.0 1,337,713.0         74,353.2     1,699.1
-753189677844515216               Balvanera  Entire home/apt             3       2.0    1.0 1,528,814.8         87,007.0     1,657.1
-1125251935441793331            San Nicolas  Entire home/apt             2       1.0    1.0 1,414,663.3         87,502.3     1,516.7
+1457630902555107353              Caballito     Private room             1       1.0    1.0   917,289.0         45,544.3     1,914.1
+35184890                         Balvanera  Entire home/apt             2       0.0    1.0 1,337,713.0         72,994.5     1,732.6
+41821756                           Palermo  Entire home/apt             2       0.0    1.0 1,226,327.8         67,141.3     1,726.5
+753189677844515216               Balvanera  Entire home/apt             3       2.0    1.0 1,528,814.8         89,480.1     1,608.6
+1125251935441793331            San Nicolas  Entire home/apt             2       1.0    1.0 1,414,663.3         88,708.7     1,494.7
 
 8.4 Asociacion entre brecha de precio y actividad reciente (holdout)
                                      publicaciones  spearman  p_spearman  ltm_mediana_decil1  ltm_mediana_decil10  p_mann_whitney
 variante                                                                                                                         
-todas                                         5721   -0.1443      0.0000              5.0000               1.0000          0.0000
-con al menos una resena                       5014   -0.1419      0.0000              9.0000               4.0000          0.0000
-primera resena hace mas de 12 meses           3808   -0.1456      0.0000             11.0000               4.0000          0.0000
+todas                                         5721   -0.1454      0.0000              5.0000               1.0000          0.0000
+con al menos una resena                       5014   -0.1459      0.0000             10.0000               4.0000          0.0000
+primera resena hace mas de 12 meses           3808   -0.1496      0.0000             13.0000               4.0000          0.0000
 
 Mediana de resenas de 12 meses por decil de brecha (1 = mas por debajo)
    todas  con al menos una resena  primera resena hace mas de 12 meses
-0    5.0                      9.0                                 11.0
-1   11.0                     14.0                                 16.0
-2   10.0                     12.0                                 16.0
-3   10.0                     12.0                                 14.0
-4    9.0                     12.0                                 14.0
-5    8.0                      9.0                                 11.0
-6    7.5                      9.0                                 10.0
-7    5.0                      7.0                                  9.0
-8    4.0                      6.0                                  7.0
+0    5.0                     10.0                                 13.0
+1   11.0                     14.0                                 15.0
+2   10.0                     11.0                                 14.0
+3   11.0                     13.0                                 15.0
+4    8.0                     10.0                                 13.0
+5    8.0                     10.0                                 11.0
+6    7.0                      9.0                                 11.0
+7    5.0                      8.0                                  9.0
+8    5.0                      6.0                                  7.0
 9    1.0                      4.0                                  4.0
 
 8.5 La asociacion dentro de estratos de calificacion (control por calidad observable)
                           publicaciones  spearman  p_spearman
 estrato                                                      
-calificacion 1.00 a 4.79           1677   -0.1643      0.0000
-calificacion 4.80 a 4.94           1768   -0.1933      0.0000
-calificacion 4.95 a 5.00           1569   -0.0268      0.2882
+calificacion 1.00 a 4.79           1677   -0.1755      0.0000
+calificacion 4.80 a 4.94           1768   -0.1911      0.0000
+calificacion 4.95 a 5.00           1569   -0.0269      0.2862
 
-reviews: data/reviews.csv | 1,241,902 resenas
+reviews: data\reviews.csv | 1,241,902 resenas
 
 8.6 Asociacion segun la ventana temporal de resenas
                              resenas_totales  spearman  p_spearman
 ventana_dias                                                      
 90                                    102504   -0.1486      0.0000
-180                                   197658   -0.1551      0.0000
-365                                   390348   -0.1443      0.0000
-365 (number_of_reviews_ltm)            82365   -0.1443      0.0000
+180                                   197658   -0.1554      0.0000
+365                                   390348   -0.1453      0.0000
+365 (number_of_reviews_ltm)            82365   -0.1454      0.0000
 
 8.7 Auditoria: como se reparte el senalamiento entre grupos
                            atributo  publicaciones  pct_subvaluadas  pct_sobrevaluadas  brecha_mediana_pct
 grupo                                                                                                     
-f                    superanfitrion           3393             14.3               10.5                -6.9
-t                    superanfitrion           2328              5.8                7.6                -3.7
-Entire home/apt  tipo de habitacion           5125              9.5                8.3                -5.4
-Hotel room       tipo de habitacion             79              1.3               60.8                76.9
-Private room     tipo de habitacion            477             24.9               11.7               -11.1
-Shared room      tipo de habitacion             40             30.0               12.5                 4.2
+f                    superanfitrion           3393             15.2               10.4                -7.2
+t                    superanfitrion           2328              5.5                7.6                -3.5
+Entire home/apt  tipo de habitacion           5125             10.1                8.2                -5.5
+Hotel room       tipo de habitacion             79              1.3               55.7                68.7
+Private room     tipo de habitacion            477             23.1               12.2               -11.2
+Shared room      tipo de habitacion             40             32.5               15.0                -3.1
 
 Senalamiento segun escala del anfitrion
                         publicaciones  pct_subvaluadas  pct_sobrevaluadas
 comercial                                                                
-anfitrion con 1 o 2              2656             10.0                8.4
-anfitrion con mas de 2           3065             11.5               10.1
+anfitrion con 1 o 2              2656             10.1                8.5
+anfitrion con mas de 2           3065             12.3                9.9
 
 ==============================================================================
 9. Traduccion a negocio: escenario parametrico
@@ -335,15 +335,15 @@ posicionamiento bajo supuestos explicitos que el lector puede cambiar.
 
 9.1 Magnitud de la brecha en publicaciones subvaluadas del holdout
    fraccion_de_brecha_cerrada  noches_ocupadas_por_mes  publicaciones_subvaluadas  brecha_anual_ARS_millones
-0                         0.3                        5                        619                      663.7
-1                         0.3                       10                        619                    1,327.4
-2                         0.3                       15                        619                    1,991.2
-3                         0.5                        5                        619                    1,106.2
-4                         0.5                       10                        619                    2,212.4
-5                         0.5                       15                        619                    3,318.6
-6                         0.7                        5                        619                    1,548.7
-7                         0.7                       10                        619                    3,097.4
-8                         0.7                       15                        619                    4,646.0
+0                         0.3                        5                        644                      704.7
+1                         0.3                       10                        644                    1,409.4
+2                         0.3                       15                        644                    2,114.1
+3                         0.5                        5                        644                    1,174.5
+4                         0.5                       10                        644                    2,349.0
+5                         0.5                       15                        644                    3,523.4
+6                         0.7                        5                        644                    1,644.3
+7                         0.7                       10                        644                    3,288.5
+8                         0.7                       15                        644                    4,932.8
 
 Lectura: son ordenes de magnitud sobre el 20% del mercado analizado, bajo supuestos
 de ocupacion que el dataset no observa. No es una proyeccion de ingresos.
@@ -361,10 +361,10 @@ Holdout (publicaciones / anfitriones)   5,721 / 2,687
 Modelo elegido                                XGBoost
 MdAPE benchmark (holdout)                       28.3%
 MdAPE regresion lineal (holdout)                24.5%
-MdAPE XGBoost (holdout)                         21.8%
-Reduccion sobre el benchmark                    23.0%
-R2 sobre log(precio) (holdout)                  0.503
-Publicaciones con desvio significativo          20.1%
-Spearman brecha vs actividad reciente          -0.144
+MdAPE XGBoost (holdout)                         21.5%
+Reduccion sobre el benchmark                    24.1%
+R2 sobre log(precio) (holdout)                  0.506
+Publicaciones con desvio significativo          20.5%
+Spearman brecha vs actividad reciente          -0.145
 
-tiempo total: 3.1 min
+tiempo total: 2.0 min

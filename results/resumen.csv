@@ -5,8 +5,8 @@ Holdout (publicaciones / anfitriones),"5,721 / 2,687"
 Modelo elegido,XGBoost
 MdAPE benchmark (holdout),28.3%
 MdAPE regresion lineal (holdout),24.5%
-MdAPE XGBoost (holdout),21.8%
-Reduccion sobre el benchmark,23.0%
-R2 sobre log(precio) (holdout),0.503
-Publicaciones con desvio significativo,20.1%
-Spearman brecha vs actividad reciente,-0.144
+MdAPE XGBoost (holdout),21.5%
+Reduccion sobre el benchmark,24.1%
+R2 sobre log(precio) (holdout),0.506
+Publicaciones con desvio significativo,20.5%
+Spearman brecha vs actividad reciente,-0.145
